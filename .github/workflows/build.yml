@@ -10,12 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: 'dd010101/vyos-build'
-          ref: 'sagitta'
+          repository: 'vyos/vyos-build'
+          ref: 'current'
       - run: sudo make clean
-      - run: sudo ./build-vyos-image iso --architecture amd64 --build-by "m.k@mk16.de" --build-type release --vyos-mirror https://rolling-packages.vyos.net/current/
+      - run: sudo ./build-vyos-image generic --architecture amd64 --build-by "m.k@mk16.de" --build-type release --vyos-mirror https://rolling-packages.vyos.net/current/
       - uses: actions/upload-artifact@v4
         with:
           path: build/live-image-amd64.hybrid.iso
 
-        
